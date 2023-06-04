@@ -50,8 +50,7 @@ const XLayout: React.FC<AppLayoutProps> = (props) => {
   return (
     <Layout className="h-screen overflow-hidden" >
       <Sider collapsible collapsed={collapsed} onCollapse={handleToggle}>
-        <div className="logo" />
-        <SelectRoleBox />
+        {/* <div className="logo" /> */}
         <Menu
           defaultSelectedKeys={[paths.home]}
           mode="inline"
