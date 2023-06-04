@@ -1,4 +1,4 @@
-import { ConfigProvider, HelmetHandler, MessageHandler, Router, SharedProvider, StoreProvider } from "./components/wrapper"
+import { ConfigProvider, MessageHandler, Router, SharedProvider, StoreProvider } from "./components/wrapper"
 import  paths  from "./constants/paths"
 
 

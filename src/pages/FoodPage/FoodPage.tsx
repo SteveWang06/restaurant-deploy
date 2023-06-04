@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import FoodItem from "./partials/FoodItem";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { fetchAllFood } from "../../store/restaurant/food/reducer";
-import { FoodType, PaginationType } from "types/FoodType";
+import { FoodType } from "types/FoodType";
 import { userLogin } from "../../store/restaurant/auth";
 
 const FoodPage = () => {

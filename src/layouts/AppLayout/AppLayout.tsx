@@ -38,7 +38,7 @@ const XLayout: React.FC<AppLayoutProps> = (props) => {
     dispatch(selectTheme(themeKey));
 
   return (
-    <Layout className="flex-row h-screen">
+    <Layout >
       <Sider collapsible collapsed={collapsed} onCollapse={handleToggle}>
         <div className="logo" />
         <SelectRoleBox />
@@ -108,7 +108,7 @@ const XLayout: React.FC<AppLayoutProps> = (props) => {
             <UserButton />
           </div>
         </Header>
-        <Content className="flex flex-col" style={{ margin: "0 16px" }}>
+        <Content className="!p-10 overflow-hidden !h-full" style={{ margin: "0 16px" }}>
           {children}
         </Content>
       </Layout>

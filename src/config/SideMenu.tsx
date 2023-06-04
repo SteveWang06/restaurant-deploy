@@ -24,6 +24,7 @@ function getItem(
 
 const items: MenuItem[] = [
   getItem("Order", paths.home, <ProjectOutlined />),
+  getItem("Calendar Work", paths.calendarWork, <ProjectOutlined />),
   // getItem("Properties", "properties", <PieChartOutlined />, [
   //   getItem("Attributes", paths.attributes, <CalendarOutlined />),
   //   getItem("Services", "services", <CalendarOutlined />, [

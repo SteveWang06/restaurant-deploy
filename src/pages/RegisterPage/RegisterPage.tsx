@@ -5,29 +5,24 @@ import {
   Input,
   Button,
   Form,
-  Tabs,
   Space,
-  Checkbox,
   Divider,
-  message,
-  Select,
   TreeSelect,
 } from "antd";
 import {
   GithubOutlined,
   TwitterOutlined,
   FacebookOutlined,
-  LoginOutlined,
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../store";
+import { useAppDispatch} from "../../store";
 import { LoginPayload } from "../../types/AuthType";
 import Swal from "sweetalert2";
 import React, { useState } from "react";
 import userRequester from "../../services/requester/userRequester";
 
 const { Content } = Layout;
-const { Text, Title, Link } = Typography;
+const { Text, Title } = Typography;
 
 function DefaultLoginForm() {
   const navigate = useNavigate();

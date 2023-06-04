@@ -13,6 +13,7 @@ const instance : PathType = {
     senOTP: 'sendOTP',
     staff: 'staff',
     food: 'food',
+    calendarWork: 'calendarWork',
 };
 
 export default instance;

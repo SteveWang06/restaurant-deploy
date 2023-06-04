@@ -4,9 +4,8 @@ import React, { Key, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "antd";
 import userRequester from "../../services/requester/userRequester";
-import { CartType } from "../../types/FoodType";
 import Swal from "sweetalert2";
-import { addToCart, removeCart } from "../../store/restaurant/food";
+import {  removeCart } from "../../store/restaurant/food";
 
 const OrderPage = () => {
   const { cartList } = useAppSelector((state) => state.restaurant.food);

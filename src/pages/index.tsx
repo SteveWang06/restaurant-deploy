@@ -8,3 +8,4 @@ export {default as HomePage} from './home';
 export {default as LoadingPage} from './LoginPage';
 export {default as LoginPage} from './LoginPage';
 export {default as FoodPage} from './FoodPage';
+export {default as CalenderWorkPage} from './CalendarWorkPage';

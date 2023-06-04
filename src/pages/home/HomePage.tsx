@@ -1,11 +1,9 @@
-import React, { Key, useEffect, useState } from "react";
-import axiosClient from "../../services/axiosClient";
+import React, {  useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { fetchAllOrder } from "../../store/restaurant/order";
-import { Button, Layout, Select, Space, Tag, Typography } from "antd";
+import {  Layout, Select, Space, Tag, Typography } from "antd";
 import { Content } from "antd/es/layout/layout";
 const { Title, Text } = Typography;
-import { theme } from "antd";
 import { FoodOrderType, OrderListType, OrderType } from "../../types/orderType";
 import { adminRequester } from "../../services";
 
@@ -46,8 +44,8 @@ const HomePage = (props: any) => {
 
   return (
     <div>
-      <Layout>
-        <Content className="my-10 px-5">
+      <>
+        <Content>
           <Typography.Title level={3}>Order List</Typography.Title>
           <Content className="grid grid-cols-12 gap-8">
             {order?.map((ele: OrderListType, index: number) => {
@@ -171,7 +169,7 @@ const HomePage = (props: any) => {
             })}
           </Content>
         </Content>
-      </Layout>
+      </>
     </div>
   );
 };
