@@ -1,7 +1,7 @@
 import "./AppLayout.style.less";
 import { Layout, Menu, Input, Typography, Button } from "antd";
 import paths from '../../constants/paths'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import menus from "../../config/SideMenu";
 import Sider from "antd/es/layout/Sider";
@@ -16,6 +16,9 @@ import {
 } from "./partials";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { selectTheme } from "../../store/app/theme";
+import { fetchAllCalendarWork } from "../../store/restaurant/calendarWork";
+import { fetchAllOrder } from "../../store/restaurant/order";
+import { fetchAllStaff } from "../../store/restaurant/staff";
 
 const { Search } = Input;
 
@@ -33,12 +36,19 @@ const XLayout: React.FC<AppLayoutProps> = (props) => {
     navigate(path as string);
   };
 
+
+  useEffect(() => {
+    dispatch(fetchAllCalendarWork());
+    dispatch(fetchAllOrder(""));
+    dispatch(fetchAllStaff(''))
+  }, []);
+
   const handleToggle = (value: boolean) => setCollapsed(value);
   const handleChangeTheme = (themeKey: string) =>
     dispatch(selectTheme(themeKey));
 
   return (
-    <Layout >
+    <Layout className="h-screen overflow-hidden" >
       <Sider collapsible collapsed={collapsed} onCollapse={handleToggle}>
         <div className="logo" />
         <SelectRoleBox />
@@ -108,7 +118,7 @@ const XLayout: React.FC<AppLayoutProps> = (props) => {
             <UserButton />
           </div>
         </Header>
-        <Content className="!p-10 overflow-hidden !h-full" style={{ margin: "0 16px" }}>
+        <Content className="!p-10 !h-full overflow-y-scroll" style={{ margin: "0 16px" }}>
           {children}
         </Content>
       </Layout>

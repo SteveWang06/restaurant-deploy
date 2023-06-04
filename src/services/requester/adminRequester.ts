@@ -28,7 +28,14 @@ const userRequester = {
                 id: data.order_id 
             }
         })
-    }
+    },
+
+    getAllCalendarWork: async () => {
+        return await axiosClient({
+            url: ApiPahts.getCalendarWork,
+            method: 'GET'
+        })
+    },
 };
 
 export default userRequester;

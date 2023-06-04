@@ -26,8 +26,8 @@ const FoodPage = () => {
     <Wrapper className="mt-20">
       <div className="grid grid-cols-12 gap-8">
         {food?.map((ele: FoodType, index: number) => (
-          <div className="col-span-4">
-            <FoodItem key={ele.id} data={ele} />
+          <div key={index} className="col-span-4">
+            <FoodItem data={ele} />
           </div>
         ))}
       </div>

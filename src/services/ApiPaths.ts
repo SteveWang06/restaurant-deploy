@@ -10,4 +10,10 @@ export const ApiPahts = {
     orderList: '/v1/api/getAllOrder',
     orderType: '/v1/api/getAllOrderStatus',
     updateOrder: '/v1/api/updateOrder',
-} ;
+    getCalendarWork: '/v1/api/getAllCalenderWork',
+    getAllStaff: '/v1/api/getAllStaff',
+    getWorkShift: '/v1/api/getAllWorkShift',
+    createCalendar: '/v1/api/createCalenderWork',
+    deleteCalendar: '/v1/api/deleteCalenderWork',
+    getDetailCalendar: '/v1/api/getDetailCalenderWork',
+};

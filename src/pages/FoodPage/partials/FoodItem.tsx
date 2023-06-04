@@ -37,7 +37,7 @@ const FoodItem = ({ data }: FoodItemProps) => {
             defaultValue={4}
           />
           <div className="px-4 py-2 bg-lightGray rounded-lg shadow-inner">
-            <p className="font-semibold text-rose text-xl">$ {data.price}</p>
+            <p className="font-semibold text-rose text-xl">$ {data?.price}</p>
           </div>
         </div>
 

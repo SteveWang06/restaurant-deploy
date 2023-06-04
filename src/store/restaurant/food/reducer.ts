@@ -5,7 +5,7 @@ import { foodRequester } from "../../../services";
 
 interface FoodState {
   isLoading: boolean;
-  food?: FoodType[];
+  food: FoodType[];
   cartList: {
     food: FoodType;
     quantity: number;
@@ -14,7 +14,7 @@ interface FoodState {
 
 const initialState: FoodState = {
   isLoading: false,
-  food: undefined,
+  food: [],
   cartList: [],
 };
 

@@ -12,7 +12,6 @@ const HomePage = (props: any) => {
   const dispatch = useAppDispatch();
   const { order } = useAppSelector((state) => state.restaurant.order);
   useEffect(() => {
-    dispatch(fetchAllOrder(""));
     fetOrderType();
   }, []);
 
@@ -27,7 +26,6 @@ const HomePage = (props: any) => {
 
   const handleChangeStatus = async (value: any) => {
     try {
-      console.log(value)
       const data = {
         order_id: value.order_id,
         data: {
@@ -54,19 +52,19 @@ const HomePage = (props: any) => {
                   <div>
                     <div className="absolute top-4 right-2">
                       <Space size={[0, 8]} wrap>
-                        {(ele.order_status.role === 1 && (
+                        {(ele?.order_status?.role === 1 && (
                           <Tag color="blue">
-                            {ele?.order_status.status_type}
+                            {ele?.order_status?.status_type}
                           </Tag>
                         )) ||
-                          (ele.order_status.role === 1 && (
+                          (ele?.order_status?.role === 1 && (
                             <Tag color="gold">
-                              {ele?.order_status.status_type}
+                              {ele?.order_status?.status_type}
                             </Tag>
                           )) ||
-                          (ele.order_status.role === 1 && (
+                          (ele?.order_status?.role === 1 && (
                             <Tag color="green">
-                              {ele?.order_status.status_type}
+                              {ele?.order_status?.status_type}
                             </Tag>
                           ))}
                       </Space>
@@ -85,14 +83,14 @@ const HomePage = (props: any) => {
                     <div className="flex items-center gap-8">
                       <img
                         className="w-16 h-16 rounded-full"
-                        src={ele?.user.avatar}
+                        src={ele?.user?.avatar}
                         alt=""
                       />
                       <Content>
                         <Title level={4} className="text-black">
-                          {ele?.user.name}
+                          {ele?.user?.name}
                         </Title>
-                        <Text className="text-black">{ele?.user.phone}</Text>
+                        <Text className="text-black">{ele?.user?.phone}</Text>
                       </Content>
                     </div>
                   </div>
@@ -103,7 +101,7 @@ const HomePage = (props: any) => {
                     >
                       Food
                     </Title>
-                    {ele.food.map((food: FoodOrderType, index: number) => {
+                    {ele?.food?.map((food: FoodOrderType, index: number) => {
                       return (
                         <div
                           key={index}
@@ -112,18 +110,18 @@ const HomePage = (props: any) => {
                           <img
                             className="w-16 h-16 rounded-full"
                             src={food?.image[0]}
-                            alt={food.food_name}
+                            alt={food?.food_name}
                           />
                           <Content>
                             <Title level={4} className="text-black">
-                              {food.food_name}
+                              {food?.food_name}
                             </Title>
                             <div className="flex gap-4">
                               <Text className="text-black">
-                                quantity: {food.quatity}
+                                quantity: {food?.quatity}
                               </Text>
                               <Text className="text-black">
-                                price: $ {food.price}
+                                price: $ {food?.price}
                               </Text>
                             </div>
                           </Content>
@@ -135,7 +133,7 @@ const HomePage = (props: any) => {
                       className="text-rose border-t pt-4 mt-4 border-solid border-black flex justify-between"
                     >
                       <span>Total:</span>
-                      <span>$ {ele.total_price}</span>
+                      <span>$ {ele?.total_price}</span>
                     </Title>
                     <div>
                       <div className="border-t pt-2 mt-4 border-solid border-black">
@@ -143,10 +141,10 @@ const HomePage = (props: any) => {
                         <Select
                           showSearch={false}
                           style={{ width: 200 }}
-                          defaultValue={ele.order_status_id}
+                          defaultValue={ele?.order_status_id}
                           onChange={(value) => {
                             const data = {
-                              order_id: ele.id,
+                              order_id: ele?.id,
                               data: {
                                 order_status_id: value,
                               }
@@ -157,8 +155,8 @@ const HomePage = (props: any) => {
                           optionFilterProp="children"
                           options={
                             orderType?.map((p: OrderType) => ({
-                              value: p.id,
-                              label: p.status_type
+                              value: p?.id,
+                              label: p?.status_type
                             }))}
                         />
                       </div>

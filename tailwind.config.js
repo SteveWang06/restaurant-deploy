@@ -32,6 +32,7 @@ export default {
       roseBg: '#f59595c2',
       roseBorder: '#ff6565bf',
       transparent: 'transparent',
+      green: '#1bab12'
     },
 
     container: {
