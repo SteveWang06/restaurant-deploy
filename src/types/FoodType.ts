@@ -12,6 +12,13 @@ export interface FoodType  {
     oder: any;
 }
 
+export interface FoodCreateType {
+    food_name: string;
+    price: string;
+    description: string;
+    image: File[]
+}
+
 export interface FoodItemProps {
     data: FoodType[] | any;
 }

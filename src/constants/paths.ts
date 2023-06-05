@@ -15,7 +15,9 @@ const instance : PathType = {
     food: 'food',
     calendarWork: 'calendarWork',
     createCalendar: 'createCalendar',
-    updateCalendar: 'updateCalendar/:id'
+    updateCalendar: 'updateCalendar/:id',
+    foodManament: 'foodManament',
+    createFood: 'createFood',
 };
 
 export default instance;

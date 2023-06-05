@@ -16,4 +16,7 @@ export const ApiPahts = {
     createCalendar: '/v1/api/createCalenderWork',
     deleteCalendar: '/v1/api/deleteCalenderWork',
     getDetailCalendar: '/v1/api/getDetailCalenderWork',
+    updateCalendar: '/v1/api/updateCalenderWork',
+    deleteFood: '/v1/api/deleteFood',
+    createFood: '/v1/api/createFood',
 };

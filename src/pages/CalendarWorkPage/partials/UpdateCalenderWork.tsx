@@ -7,11 +7,10 @@ type SizeType = Parameters<typeof Form>[0]["size"];
 import type { SelectProps, DatePickerProps } from "antd";
 import { WorkShiftType } from "../../../types/orderType";
 import staffRequester from "../../../services/requester/staffRequester";
-import { Moment } from "moment";
+import moment, { Moment } from "moment";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { CalendarWorkListType } from "../../../types/orderType";
-
 
 const UpdateCalenderWork: React.FC = () => {
   const [componentSize, setComponentSize] = useState<SizeType | "default">(
@@ -23,13 +22,11 @@ const UpdateCalenderWork: React.FC = () => {
   >([]);
   const [dateWork, setDateWork] = useState<string | null>(null);
   const [workShitftId, setWorkShitftId] = useState<string | null>(null);
-  const { staffList } = useAppSelector((state) => state.restaurant.staff);
-  const options: SelectProps["options"] = [];
   const [workShift, setWorkShift] = useState<WorkShiftType[]>([]);
   const navigate = useNavigate();
   const params = useParams();
 
-
+  console.log(Date.now);
 
   const getWorkShift = async () => {
     try {
@@ -51,32 +48,14 @@ const UpdateCalenderWork: React.FC = () => {
   };
 
   useEffect(() => {
-   
     getWorkShift();
     getCalendarDetail();
-    if(calendarDetail) {
-        setWorkShitftId(calendarDetail.work_shift_id)
+    if (calendarDetail) {
+      setWorkShitftId(calendarDetail.work_shift_id);
+      setDateWork(calendarDetail.date_work); // Đặt giá trị mặc định cho dateWork
     }
   }, []);
-
-
-  if (staffList) {
-    for (let i = 0; i < staffList.length; i++) {
-      options.push({
-        key: staffList[i].id,
-        label: staffList[i].name,
-        value: staffList[i].id,
-      });
-    }
-  }
-
-  const handleChange = (value: string[]) => {
-    const data = value.map((ele) => ({
-      is_work: false,
-      staff_id: ele,
-    }));
-    setAddStaff(data);
-  };
+  console.log(workShift);
 
   const onFormLayoutChange = ({ size }: { size: SizeType }) => {
     setComponentSize(size);
@@ -87,7 +66,6 @@ const UpdateCalenderWork: React.FC = () => {
       const data = {
         date_work: dateWork,
         work_shift_id: workShitftId,
-        staff: addStaff,
       };
 
       await staffRequester.createCalendar(data);
@@ -120,13 +98,11 @@ const UpdateCalenderWork: React.FC = () => {
     }
   };
 
-const defaulWorkShift = workShift.map(ele => {
-    if(ele.id === workShitftId) {
-        return ele.shift_name
-    }
-}) || '';
+  const workShiftValue = workShift.filter(
+    (ele) => ele.id === calendarDetail?.work_shift_id
+  );
 
-console.log(defaulWorkShift)
+
 
   return (
     <div>
@@ -148,16 +124,6 @@ console.log(defaulWorkShift)
             <Radio.Button value="large">Large</Radio.Button>
           </Radio.Group>
         </Form.Item>
-        <Form.Item label="add staff">
-          <Select
-            mode="multiple"
-            allowClear
-            style={{ width: "100%" }}
-            placeholder="Please select"
-            onChange={handleChange}
-            options={options}
-          />
-        </Form.Item>
         <Form.Item label="work shift">
           <Select
             showSearch
@@ -173,7 +139,7 @@ console.log(defaulWorkShift)
                 .toLowerCase()
                 .localeCompare((optionB?.label ?? "").toLowerCase())
             }
-            value={defaulWorkShift[0]}
+            value={String(workShiftValue[0]?.shift_name)}
             options={workShift.map((ele: WorkShiftType) => ({
               label: ele.shift_name,
               value: ele.id,
@@ -182,7 +148,11 @@ console.log(defaulWorkShift)
         </Form.Item>
 
         <Form.Item label="Date Work">
-          <DatePicker onChange={handleDateChange} />
+          <DatePicker
+            value={dateWork && moment(new Date(dateWork), "MM/DD/YYYY")}
+            format={"MM/DD/YYYY"}
+            onChange={handleDateChange}
+          />
         </Form.Item>
         <Form.Item label="Button">
           <Button htmlType="submit">Button</Button>

@@ -56,6 +56,8 @@ const CalenderWorkPage: React.FC = () => {
       console.log(err);
     }
   };
+
+
   const columns: ColumnsType<DataType> = [
     {
       title: "Date",
@@ -118,7 +120,9 @@ const CalenderWorkPage: React.FC = () => {
             <FormOutlined className="text-green text-[20px] cursor-pointer" />
           </span>
           <span onClick={() => handleDeleteCalendar(text.id)}>
-            <DeleteOutlined className="text-rose text-[20px] cursor-pointer" />
+            <DeleteOutlined 
+              onClick={() => handleDeleteCalendar(text.id)}
+            className="text-rose text-[20px] cursor-pointer" />
           </span>
         </div>
       ),

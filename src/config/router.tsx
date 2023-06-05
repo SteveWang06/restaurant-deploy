@@ -11,6 +11,8 @@ const FoodPage = React.lazy(() => import('../pages/FoodPage'));
 const RegisterPage = React.lazy(() => import('../pages/RegisterPage'))
 const CalenderWorkPage = React.lazy(() => import('../pages/CalendarWorkPage'));
 const UpdateCalenderWork = React.lazy(() => import('../pages/CalendarWorkPage/partials/UpdateCalenderWork'));
+const FoodManament = React.lazy(() => import('../pages/FoodManament'));
+const CreateFood = React.lazy(() => import('../pages/FoodManament/partials/CreateFood'))
 
 export interface PrivateRouteProps {
     renderIfTrue?: (state: StoreState) => boolean;
@@ -53,7 +55,15 @@ const extendedRoutes: RouteObject[] = [
     {
         path: paths.updateCalendar,
         element: <UpdateCalenderWork />
-    }
+    },
+    {
+        path: paths.foodManament,
+        element: <FoodManament />
+    },
+    {
+        path: paths.createFood,
+        element: <CreateFood />
+    },
 ];
 
 const foodLayoutRoutes: RouteObject[] = [

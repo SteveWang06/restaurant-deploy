@@ -19,6 +19,7 @@ import { selectTheme } from "../../store/app/theme";
 import { fetchAllCalendarWork } from "../../store/restaurant/calendarWork";
 import { fetchAllOrder } from "../../store/restaurant/order";
 import { fetchAllStaff } from "../../store/restaurant/staff";
+import { fetchAllFood } from "../../store/restaurant/food";
 
 const { Search } = Input;
 
@@ -40,7 +41,8 @@ const XLayout: React.FC<AppLayoutProps> = (props) => {
   useEffect(() => {
     dispatch(fetchAllCalendarWork());
     dispatch(fetchAllOrder(""));
-    dispatch(fetchAllStaff(''))
+    dispatch(fetchAllStaff(''));
+    dispatch(fetchAllFood(''));
   }, []);
 
   const handleToggle = (value: boolean) => setCollapsed(value);
@@ -50,7 +52,7 @@ const XLayout: React.FC<AppLayoutProps> = (props) => {
   return (
     <Layout className="h-screen overflow-hidden" >
       <Sider collapsible collapsed={collapsed} onCollapse={handleToggle}>
-        {/* <div className="logo" /> */}
+        <div className="logo" />
         <Menu
           defaultSelectedKeys={[paths.home]}
           mode="inline"
