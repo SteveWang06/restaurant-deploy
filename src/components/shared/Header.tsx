@@ -201,6 +201,9 @@ const Header = () => {
                   <p className="py-4">{profile?.email}</p>
                   <p>{profile?.phone}</p>
                   <Button 
+                  onClick={() => navigate('/admin/home')}
+                  className="mt-5 w-full">Admin Page</Button>
+                  <Button 
                   onClick={handleLogout}
                   className="mt-5 w-full">Logout</Button>
                 </div>

@@ -20,8 +20,11 @@ import { fetchAllCalendarWork } from "../../store/restaurant/calendarWork";
 import { fetchAllOrder } from "../../store/restaurant/order";
 import { fetchAllStaff } from "../../store/restaurant/staff";
 import { fetchAllFood } from "../../store/restaurant/food";
+import { userLogin } from "../../store/restaurant/auth";
+
 
 const { Search } = Input;
+const {Title} = Typography
 
 export interface AppLayoutProps {
   children?: React.ReactElement;
@@ -31,19 +34,24 @@ const XLayout: React.FC<AppLayoutProps> = (props) => {
   const { children } = props;
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState<boolean>(false);
+  const {profile} = useAppSelector(state => state.restaurant.auth);
   const { selected } = useAppSelector((state) => state.app.theme);
   const dispatch = useAppDispatch();
   const handleNavigate = ({ key: path }: { key: React.Key }) => {
     navigate(path as string);
   };
+  
 
+  
 
   useEffect(() => {
+    dispatch(userLogin())
     dispatch(fetchAllCalendarWork());
     dispatch(fetchAllOrder(""));
     dispatch(fetchAllStaff(''));
     dispatch(fetchAllFood(''));
   }, []);
+  
 
   const handleToggle = (value: boolean) => setCollapsed(value);
   const handleChangeTheme = (themeKey: string) =>
@@ -116,7 +124,11 @@ const XLayout: React.FC<AppLayoutProps> = (props) => {
               }
               shape="circle"
             />
-            <UserButton />
+            <div className="flex justify-around items-center gap-4">
+            <img className="w-10 h-10 rounded-full" src={profile?.avatar} alt="avatar" />
+            <Title level={5} className="capitalize">{profile?.name}</Title>
+            </div>
+            {/* <UserButton data={profile} /> */}
           </div>
         </Header>
         <Content className="!p-10 !h-full overflow-y-scroll" style={{ margin: "0 16px" }}>
